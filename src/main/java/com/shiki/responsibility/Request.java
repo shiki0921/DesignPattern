@@ -28,4 +28,9 @@ public class Request {
 		return amount;
 	}
 
+	@Override
+	public String toString() {
+		return "Request [name=" + name + ", amount=" + amount + "]";
+	}
+
 }
