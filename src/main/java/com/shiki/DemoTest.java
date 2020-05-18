@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import com.shiki.decorator.BoldDecorator;
+import com.shiki.decorator.SpanNode;
+import com.shiki.decorator.TextNode;
 import com.shiki.responsibility.CEOHandler;
 import com.shiki.responsibility.DirectorHandler;
 import com.shiki.responsibility.HandlerChain;
@@ -39,6 +42,28 @@ public class DemoTest {
 		chain.process(new Request("Bob", BigDecimal.valueOf(1000)));
 		chain.process(new Request("Jack", BigDecimal.valueOf(9000)));
 		chain.process(new Request("David", BigDecimal.valueOf(11000)));
+	}
+	
+	/**
+	 * 装饰器模式是一种在运行期动态给某个对象的实例增加功能的方法。
+	 * 动态地给一个对象添加一些额外的职责。就增加功能来说，相比生成子类更加灵活。
+	 */
+	@Test
+	public void test02(){
+//		TextNode n1 = new SpanNode();
+//		TextNode n2 = new BoldDecorator(new UnderlineDecorator(new SpanNode()));
+//		TextNode n3 = new ItalicDecorator(new BoldDecorator(new SpanNode()));
+//		n1.setText("Hello");
+//		n2.setText("Decorated");
+//		n3.setText("World");
+//		System.out.println(n1.getText());
+//		// 输出<span>Hello</span>
+//
+//		System.out.println(n2.getText());
+//		// 输出<b><u><span>Decorated</span></u></b>
+//
+//		System.out.println(n3.getText());
+//		// 输出<i><b><span>World</span></b></i>
 	}
 
 }
