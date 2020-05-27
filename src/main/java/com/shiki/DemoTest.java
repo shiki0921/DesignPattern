@@ -12,6 +12,8 @@ import com.shiki.responsibility.DirectorHandler;
 import com.shiki.responsibility.HandlerChain;
 import com.shiki.responsibility.ManagerHandler;
 import com.shiki.responsibility.Request;
+import com.shiki.strategy.DiscountContext;
+import com.shiki.strategy.OverDiscountStrategy;
 
 /**
  * 设计模式测试类
@@ -66,4 +68,22 @@ public class DemoTest {
 //		// 输出<i><b><span>World</span></b></i>
 	}
 
+	/*
+	 * 策略模式：Strategy，是指，定义一组算法，并把其封装到一个对象中。然后在运行时，可以灵活的使用其中的一个算法。
+	 * 			在一个方法中，流程是确定的，但是，某些关键步骤的算法依赖调用方传入的策略，这样，传入不同的策略，即可获得不同的结果，大大增强了系统的灵活性。
+	 */
+	@Test
+	public void test03(){
+		DiscountContext ctx = new DiscountContext();
+
+		// 默认使用普通会员折扣:
+		BigDecimal pay1 = ctx.calculatePrice(BigDecimal.valueOf(105));
+		System.out.println(pay1);
+
+		// 使用满减折扣:
+		ctx.setStrategy(new OverDiscountStrategy());
+		BigDecimal pay2 = ctx.calculatePrice(BigDecimal.valueOf(105));
+		System.out.println(pay2);
+
+	}
 }
