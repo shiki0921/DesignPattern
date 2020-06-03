@@ -7,6 +7,10 @@ import org.junit.Test;
 import com.shiki.decorator.BoldDecorator;
 import com.shiki.decorator.SpanNode;
 import com.shiki.decorator.TextNode;
+import com.shiki.observer.BinaryObserver;
+import com.shiki.observer.HexaObserver;
+import com.shiki.observer.OctalObserver;
+import com.shiki.observer.Subject;
 import com.shiki.responsibility.CEOHandler;
 import com.shiki.responsibility.DirectorHandler;
 import com.shiki.responsibility.HandlerChain;
@@ -85,5 +89,23 @@ public class DemoTest {
 		BigDecimal pay2 = ctx.calculatePrice(BigDecimal.valueOf(105));
 		System.out.println(pay2);
 
+	}
+	
+	/**
+	 * 观察者模式
+	 * 定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+	 */
+	@Test
+	public void test04(){
+      Subject subject = new Subject();
+      
+      new HexaObserver(subject);
+      new OctalObserver(subject);
+      new BinaryObserver(subject);
+ 
+      System.out.println("First state change: 15");   
+      subject.setState(15);
+      System.out.println("Second state change: 10");  
+      subject.setState(10);
 	}
 }
